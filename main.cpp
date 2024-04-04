@@ -7,8 +7,8 @@ int main() {
     GameState gamestate;
     Display window;
     const char CONTINUE = 'Y';
-    string userIn;
-    while (gamestate.checkGameState("running")) {
+    string userIn = "";
+    while (userIn != "Y") {
         cout << "Enter \'"<< CONTINUE << "\' to exit the simulation" << endl;
         // render space
 
