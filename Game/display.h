@@ -1,3 +1,6 @@
+#ifndef DISPLAY_H
+#define DISPLAY_H
+
 #include <iostream>
 using namespace std;
 class Display {
@@ -15,3 +18,4 @@ class Display {
         cout << "Window is running\n";
     }
 };
+#endif

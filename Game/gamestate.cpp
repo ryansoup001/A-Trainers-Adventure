@@ -1,4 +1,3 @@
-
 #include "gamestate.h"
 
 GameState::GameState() {
@@ -19,22 +18,34 @@ bool GameState::checkGameState(string state) {
 }
 void GameState::setGameState(string state, int priority) {
     /* 
+    Sets the priority GameState to specified State
+    Note: i dont know what i was trying to do here
+    Throws out most recent GameState
+    */
+    if (numStates < 3) {
+        for (int i = numStates; i > 1; i--) {
+            gamestates[i] = gamestates[i - 1]; 
+        }
+    } 
+    
+    gamestates[priority] = state;
+}
+void GameState::setGameState(string state) {
+    /* 
     Sets the first GameState to specified State
     Throws out most recent GameState
     */
-    string t;
-    if (numStates >= 3) {
-        gamestates[0] = "";
-    } else {
-        gamestates[2] = gamestates[1];
-        gamestates[1] = gamestates[0];
-    }
+    if (numStates < 3) {
+        for (int i = numStates; i > 1; i--) {
+            gamestates[i] = gamestates[i - 1]; 
+        }
+    } 
     
     gamestates[0] = state;
 }
 bool GameState::removeGameState() {
     gamestates[0] = "";
-    gamestates[0] = gamestates[1] ;
+    gamestates[0] = gamestates[1];
     gamestates[1] = gamestates[2];
     return true;
 
@@ -53,4 +64,10 @@ bool GameState::stackGameState(string state) {
     gamestates[0] = state;
     }
     return true;
+}
+void GameState::showgameStates() {
+    for (int i = 0; i < numStates; i++) {
+        cout << gamestates[i] << " ";
+    } 
+    cout << endl;
 }
